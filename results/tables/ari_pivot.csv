@@ -1,0 +1,10 @@
+dataset,Agglomerative(Ward),DBSCAN,GaussianMixture,KMeans
+circles_det,1.0,1.0,1.0,1.0
+circles_stoch,1.0,0.9933,1.0,1.0
+ellipses_nonparallel,0.978,0.9536,0.978,0.9649
+ellipses_parallel,1.0,0.9755,1.0,1.0
+letters,1.0,0.855,1.0,1.0
+mixture,1.0,0.9731,1.0,1.0
+real_iris,0.7312,0.5638,0.9039,0.7302
+rectangles_parallel,1.0,0.9525,1.0,1.0
+squares_nonparallel,1.0,0.8473,1.0,1.0
