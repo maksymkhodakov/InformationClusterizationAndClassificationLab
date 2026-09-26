@@ -5,3 +5,5 @@ __pycache__/
 *.pyc
 *.pt
 /imagenet-10/
+report/node_modules/
+report/work/

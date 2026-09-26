@@ -1,0 +1,5 @@
+item,value
+kmeans_iterations,5
+gmm_iterations,10
+dbscan_letters_gst,eps=0.146; min_samples=5; core=582; border=17; noise=1
+dbscan_rings,eps=0.514; min_samples=5; core=727; border=18; noise=5

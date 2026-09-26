@@ -1,0 +1,7 @@
+n,dataset,algorithm,scenario,delta,ARI,changed,figure
+1,letters_gst,DBSCAN,межова точка,0.05,0.8790446246479472,74,stab_example_1.png
+2,letters_gst,DBSCAN(фікс. eps),межова точка,0.05,1.0,0,stab_example_2.png
+3,circles_det,DBSCAN,10% точок,1.0,0.97684764071988,7,stab_example_3.png
+4,rings,GaussianMixture,внутрішня точка,0.25,0.1464697528241557,232,stab_example_4.png
+5,rings,Agglomerative(Ward),1% точок,0.01,0.46947017942896446,170,stab_example_5.png
+6,real_iris,GaussianMixture,10% точок,1.0,0.6368789747346334,23,stab_example_6.png

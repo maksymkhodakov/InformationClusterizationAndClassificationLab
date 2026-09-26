@@ -1,0 +1,17 @@
+family,algorithm,mean,std,min
+circles_stoch,KMeans,1.0,0.0,1.0
+circles_stoch,GaussianMixture,1.0,0.0,1.0
+circles_stoch,DBSCAN,0.9919582411214541,0.011409566706613703,0.9567981704521078
+circles_stoch,Agglomerative(Ward),1.0,0.0,1.0
+ellipses_nonparallel,KMeans,1.0,0.0,1.0
+ellipses_nonparallel,GaussianMixture,1.0,0.0,1.0
+ellipses_nonparallel,DBSCAN,0.9726983239536662,0.038984289469839034,0.8512245655095241
+ellipses_nonparallel,Agglomerative(Ward),1.0,0.0,1.0
+rectangles_nonparallel,KMeans,0.9986749634294384,0.004318494196357756,0.982373077088261
+rectangles_nonparallel,GaussianMixture,0.9995563095750255,0.0019842439024179556,0.991126191500508
+rectangles_nonparallel,DBSCAN,0.9542341865608238,0.050421411403053486,0.8215013657285879
+rectangles_nonparallel,Agglomerative(Ward),1.0,0.0,1.0
+letters_gst,KMeans,1.0,0.0,1.0
+letters_gst,GaussianMixture,1.0,0.0,1.0
+letters_gst,DBSCAN,0.954626736689146,0.05166637437517576,0.8626773188924172
+letters_gst,Agglomerative(Ward),1.0,0.0,1.0

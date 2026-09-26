@@ -1,137 +1,175 @@
-"""Генератори наборів числових даних різних типів (форм майбутніх кластерів).
+"""Генератори наборів числових даних різних типів (за формою майбутніх кластерів).
 
-Кожна функція повертає кортеж (X, y_true, opis), де:
-    X       -- np.ndarray форми (n, 2) або (n, d) з координатами точок;
-    y_true  -- np.ndarray форми (n,) з номером "істинного" кластера точки
-               (потрібен лише для оцінки якості та не подається алгоритмам);
-    opis    -- рядок з коротким описом набору (для звіту / підписів графіків).
+Кожен генератор повертає Dataset: X (n, d), y_true (n,) -- "істинні" мітки
+(використовуються лише для оцінювання, алгоритмам не передаються) та метадані.
+Усі точки кластера гарантовано лежать усередині відповідної фігури
+(коло/куля, еліпс, квадрат/куб, прямокутник/паралелепіпед).
 """
 from __future__ import annotations
 
+from dataclasses import dataclass, field
+
 import numpy as np
-from sklearn.datasets import load_iris
+from sklearn.datasets import load_iris, load_wine
+from sklearn.preprocessing import StandardScaler
+
+GENERATORS = {
+    "PCG64": np.random.PCG64,
+    "MT19937": np.random.MT19937,
+    "Philox": np.random.Philox,
+    "SFC64": np.random.SFC64,
+}
 
 
-def _rng(seed):
-    return np.random.default_rng(seed)
+def make_rng(kind: str, seed: int) -> np.random.Generator:
+    return np.random.Generator(GENERATORS[kind](seed))
 
 
-def circles_deterministic(n_clusters: int = 3, n_points: int = 120, radius: float = 1.5) -> tuple:
-    """Кластери-кола: центри розташовані детерміновано (правильний багатокутник),
-    точки в межах кожного кола -- за регулярною полярною сіткою (без випадковості)."""
-    xs, ys, labels = [], [], []
-    layout_r = 5.0
-    for c in range(n_clusters):
-        angle = 2 * np.pi * c / n_clusters
-        cx, cy = layout_r * np.cos(angle), layout_r * np.sin(angle)
-        k = int(np.ceil(np.sqrt(n_points)))
-        rr = np.linspace(0.15, 1.0, k)
-        th = np.linspace(0, 2 * np.pi, k, endpoint=False)
-        RR, TH = np.meshgrid(rr, th)
-        RR, TH = RR.ravel()[:n_points], TH.ravel()[:n_points]
-        xs.append(cx + radius * RR * np.cos(TH))
-        ys.append(cy + radius * RR * np.sin(TH))
-        labels.append(np.full(len(RR), c))
-    X = np.column_stack([np.concatenate(xs), np.concatenate(ys)])
-    y = np.concatenate(labels)
-    return X, y, f"Кола, {n_clusters} кластери, детермінований (регулярна сітка) розподіл"
+@dataclass
+class Dataset:
+    key: str
+    title: str
+    shape: str
+    orientation: str
+    generation: str
+    X: np.ndarray
+    y: np.ndarray
+    meta: dict = field(default_factory=dict)
+
+    @property
+    def n_clusters(self) -> int:
+        return len(np.unique(self.y))
 
 
-def circles_stochastic(n_clusters: int = 3, n_points: int = 150, seed: int = 0) -> tuple:
-    """Кластери-кола: центри та радіуси випадкові (uniform), точки всередині
-    кола -- за допомогою нормального (Gauss) генератора, обрізаного по радіусу."""
-    rng = _rng(seed)
-    xs, ys, labels = [], [], []
-    for c in range(n_clusters):
-        cx, cy = rng.uniform(-8, 8, size=2)
-        radius = rng.uniform(0.8, 2.2)
-        pts = rng.normal(scale=radius / 2.2, size=(n_points, 2))
-        norm = np.linalg.norm(pts, axis=1, keepdims=True)
-        norm = np.clip(norm, 1e-9, None)
-        scale = np.minimum(1.0, radius / norm)
-        pts = pts  # normal already gives roughly circular disk after clipping outliers
-        pts = np.clip(pts, -radius, radius)
-        xs.append(cx + pts[:, 0])
-        ys.append(cy + pts[:, 1])
-        labels.append(np.full(n_points, c))
-    X = np.column_stack([np.concatenate(xs), np.concatenate(ys)])
-    y = np.concatenate(labels)
-    return X, y, f"Кола, {n_clusters} кластери, стохастичний (нормальний розподіл) генератор, seed={seed}"
+def rotation_2d(theta: float) -> np.ndarray:
+    return np.array([[np.cos(theta), -np.sin(theta)], [np.sin(theta), np.cos(theta)]])
 
 
-def ellipses(n_clusters: int = 4, n_points: int = 150, parallel: bool = True, seed: int = 1) -> tuple:
-    """Кластери-еліпси. parallel=True -- усі осі еліпсів співнапрямлені (кут=0),
-    parallel=False -- кожен еліпс повернутий на власний випадковий кут."""
-    rng = _rng(seed)
-    xs, ys, labels = [], [], []
-    layout_r = 6.0
-    for c in range(n_clusters):
-        angle_pos = 2 * np.pi * c / n_clusters
-        cx, cy = layout_r * np.cos(angle_pos), layout_r * np.sin(angle_pos)
-        a, b = rng.uniform(1.2, 2.5), rng.uniform(0.3, 0.9)
+def random_rotation(d: int, rng: np.random.Generator) -> np.ndarray:
+    q, r = np.linalg.qr(rng.normal(size=(d, d)))
+    return q * np.sign(np.diag(r))
+
+
+def uniform_in_ball(n: int, d: int, rng: np.random.Generator) -> np.ndarray:
+    """Рівномірний розподіл у d-вимірній одиничній кулі."""
+    v = rng.normal(size=(n, d))
+    v /= np.linalg.norm(v, axis=1, keepdims=True)
+    r = rng.uniform(0, 1, n) ** (1.0 / d)
+    return v * r[:, None]
+
+
+def vogel_disk(n: int) -> np.ndarray:
+    """Детерміноване майже рівномірне заповнення одиничного круга (спіраль Фогеля)."""
+    i = np.arange(n) + 0.5
+    r = np.sqrt(i / n)
+    theta = i * np.pi * (3 - np.sqrt(5))
+    return np.column_stack([r * np.cos(theta), r * np.sin(theta)])
+
+
+def _assemble(parts):
+    X = np.concatenate([p for p, _ in parts])
+    y = np.concatenate([np.full(len(p), c) for p, c in parts])
+    return X, y
+
+
+# ----------------------------------------------------------------- кола / кулі
+def circles_deterministic() -> Dataset:
+    centers = [(-5.0, -3.0), (5.0, -3.0), (0.0, 5.0)]
+    radii = [1.5, 2.0, 2.5]
+    counts = [120, 160, 200]
+    parts = [(np.array(c) + r * vogel_disk(n), i) for i, (c, r, n) in enumerate(zip(centers, radii, counts))]
+    X, y = _assemble(parts)
+    return Dataset("circles_det", "Кола різного радіуса (детермінований)", "коло", "—",
+                   "детермінований (спіраль Фогеля)", X, y)
+
+
+def circles_stochastic(seed: int = 0, gen: str = "MT19937", n_clusters: int = 4) -> Dataset:
+    rng = make_rng(gen, seed)
+    centers, radii = [], []
+    while len(centers) < n_clusters:
+        c, r = rng.uniform(-8, 8, 2), rng.uniform(1.0, 2.2)
+        if all(np.linalg.norm(c - c2) > r + r2 + 0.6 for c2, r2 in zip(centers, radii)):
+            centers.append(c)
+            radii.append(r)
+    parts = [(c + r * uniform_in_ball(int(rng.integers(100, 201)), 2, rng), i)
+             for i, (c, r) in enumerate(zip(centers, radii))]
+    X, y = _assemble(parts)
+    return Dataset("circles_stoch", "Кола випадкового радіуса (стохастичний)", "коло", "—",
+                   f"стохастичний ({gen}, рівномірний у крузі)", X, y, {"seed": seed})
+
+
+def balls_3d(seed: int = 5, gen: str = "PCG64") -> Dataset:
+    rng = make_rng(gen, seed)
+    centers = np.array([[0, 0, 0], [6, 0, 0], [0, 6, 0], [0, 0, 6]], dtype=float)
+    parts = [(c + rng.uniform(1.2, 2.2) * uniform_in_ball(150, 3, rng), i) for i, c in enumerate(centers)]
+    X, y = _assemble(parts)
+    return Dataset("balls_3d", "Кулі у тривимірному просторі", "куля (3D)", "—",
+                   f"стохастичний ({gen}, рівномірний у кулі)", X, y)
+
+
+# ----------------------------------------------------------------- еліпси
+def ellipses(parallel: bool, seed: int, gen: str = "PCG64") -> Dataset:
+    rng = make_rng(gen, seed)
+    centers = [(-4.0, -3.5), (4.0, -3.5), (-4.0, 3.5), (4.0, 3.5)]
+    parts = []
+    for i, c in enumerate(centers):
+        a, b = rng.uniform(2.6, 3.4), rng.uniform(0.35, 0.6)
         theta = 0.0 if parallel else rng.uniform(0, np.pi)
-        t = rng.normal(size=n_points)
-        u = rng.normal(size=n_points)
-        pts = np.column_stack([a * t, b * u])
-        rot = np.array([[np.cos(theta), -np.sin(theta)], [np.sin(theta), np.cos(theta)]])
-        pts = pts @ rot.T
-        xs.append(cx + pts[:, 0])
-        ys.append(cy + pts[:, 1])
-        labels.append(np.full(n_points, c))
-    X = np.column_stack([np.concatenate(xs), np.concatenate(ys)])
-    y = np.concatenate(labels)
-    tag = "паралельні осі" if parallel else "непаралельні (випадково повернуті) осі"
-    return X, y, f"Еліпси, {n_clusters} кластери, {tag}, seed={seed}"
+        pts = uniform_in_ball(150, 2, rng) * np.array([a, b])
+        parts.append((np.array(c) + pts @ rotation_2d(theta).T, i))
+    X, y = _assemble(parts)
+    tag = "паралельні осі" if parallel else "непаралельні осі"
+    key = "ellipses_parallel" if parallel else "ellipses_nonparallel"
+    return Dataset(key, f"Еліпси, {tag}", "еліпс", tag, f"стохастичний ({gen}, рівномірний в еліпсі)", X, y)
 
 
-def rectangles(n_clusters: int = 4, n_points: int = 150, square: bool = False,
-               parallel: bool = True, seed: int = 2) -> tuple:
-    """Кластери-прямокутники (square=True -> квадрати/куби). parallel визначає,
-    чи сторони всіх фігур взаємно паралельні, чи кожна повернута на свій кут."""
-    rng = _rng(seed)
-    xs, ys, labels = [], [], []
-    layout_r = 6.0
-    for c in range(n_clusters):
-        angle_pos = 2 * np.pi * c / n_clusters
-        cx, cy = layout_r * np.cos(angle_pos), layout_r * np.sin(angle_pos)
-        w = rng.uniform(1.0, 2.2)
-        h = w if square else rng.uniform(0.4, 1.0)
-        theta = 0.0 if parallel else rng.uniform(0, np.pi / 2)
-        pts = rng.uniform(-1, 1, size=(n_points, 2)) * np.array([w, h])
-        rot = np.array([[np.cos(theta), -np.sin(theta)], [np.sin(theta), np.cos(theta)]])
-        pts = pts @ rot.T
-        xs.append(cx + pts[:, 0])
-        ys.append(cy + pts[:, 1])
-        labels.append(np.full(n_points, c))
-    X = np.column_stack([np.concatenate(xs), np.concatenate(ys)])
-    y = np.concatenate(labels)
-    shape_name = "квадрати" if square else "прямокутники"
-    tag = "паралельні сторони" if parallel else "непаралельні (випадково повернуті) сторони"
-    return X, y, f"{shape_name.capitalize()}, {n_clusters} кластери, {tag}, seed={seed}"
+# ----------------------------------------------------------------- квадрати / прямокутники / паралелепіпеди
+def squares_parallel_deterministic() -> Dataset:
+    parts = []
+    for i, (c, side) in enumerate(zip([(-5, -5), (5, -5), (-5, 5), (5, 5)], [3.0, 3.5, 4.0, 3.0])):
+        g = np.linspace(-side / 2, side / 2, 13)
+        gx, gy = np.meshgrid(g, g)
+        parts.append((np.column_stack([gx.ravel(), gy.ravel()]) + np.array(c), i))
+    X, y = _assemble(parts)
+    return Dataset("squares_parallel", "Квадрати, паралельні сторони (детермінований)", "квадрат",
+                   "паралельні сторони", "детермінований (регулярна решітка)", X, y)
 
 
-def _sample_polyline(points_xy, n_points, width, rng):
-    """Рівномірно вибирає точки вздовж ламаної (список опорних точок) з гаусовим шумом
-    упоперек лінії -- використовується для побудови кластерів у формі літер."""
-    points_xy = np.asarray(points_xy, dtype=float)
-    seglens = np.linalg.norm(np.diff(points_xy, axis=0), axis=1)
-    seglens = np.maximum(seglens, 1e-9)
-    cum = np.concatenate([[0], np.cumsum(seglens)])
-    total = cum[-1]
-    s = rng.uniform(0, total, size=n_points)
-    seg_idx = np.searchsorted(cum, s, side="right") - 1
-    seg_idx = np.clip(seg_idx, 0, len(seglens) - 1)
-    t = (s - cum[seg_idx]) / seglens[seg_idx]
-    p0 = points_xy[seg_idx]
-    p1 = points_xy[seg_idx + 1]
-    base = p0 + (p1 - p0) * t[:, None]
-    direction = (p1 - p0) / seglens[seg_idx, None]
-    normal = np.column_stack([-direction[:, 1], direction[:, 0]])
-    noise = rng.normal(scale=width, size=n_points)
-    return base + normal * noise[:, None]
+def rectangles(square: bool, parallel: bool, seed: int, gen: str) -> Dataset:
+    rng = make_rng(gen, seed)
+    centers = [(-4.0, -3.0), (4.0, -3.0), (-4.0, 3.0), (4.0, 3.0)]
+    parts = []
+    for i, c in enumerate(centers):
+        w = rng.uniform(1.6, 2.2)
+        h = w if square else rng.uniform(0.3, 0.5)
+        if not square:
+            w *= 1.5
+        theta = 0.0 if parallel else rng.uniform(0, np.pi)
+        pts = rng.uniform(-1, 1, size=(150, 2)) * np.array([w, h])
+        parts.append((np.array(c) + pts @ rotation_2d(theta).T, i))
+    X, y = _assemble(parts)
+    shape = "квадрат" if square else "прямокутник"
+    tag = "паралельні сторони" if parallel else "непаралельні сторони"
+    key = f"{'squares' if square else 'rectangles'}_{'parallel' if parallel else 'nonparallel'}"
+    title = f"{'Квадрати' if square else 'Прямокутники'}, {tag}"
+    return Dataset(key, title, shape, tag, f"стохастичний ({gen}, рівномірний у фігурі)", X, y)
 
 
-_LETTER_STROKES = {
+def boxes_3d_nonparallel(seed: int = 7, gen: str = "SFC64") -> Dataset:
+    rng = make_rng(gen, seed)
+    centers = np.array([[0, 0, 0], [7, 0, 0], [0, 7, 0], [0, 0, 7]], dtype=float)
+    parts = []
+    for i, c in enumerate(centers):
+        half = np.array([rng.uniform(2.0, 2.8), rng.uniform(0.6, 1.0), rng.uniform(0.3, 0.6)])
+        pts = rng.uniform(-1, 1, size=(150, 3)) * half
+        parts.append((c + pts @ random_rotation(3, rng).T, i))
+    X, y = _assemble(parts)
+    return Dataset("boxes_3d", "Паралелепіпеди у 3D, непаралельні грані", "паралелепіпед (3D)",
+                   "непаралельні грані", f"стохастичний ({gen}, рівномірний у фігурі)", X, y)
+
+
+# ----------------------------------------------------------------- несиметричні фігури (літери)
+LETTER_STROKES = {
     "Г": [[(0, 0), (0, 2), (1.2, 2)]],
     "С": [[(1.2, 2), (0, 2), (0, 0), (1.2, 0)]],
     "П": [[(0, 0), (0, 2), (1.2, 2), (1.2, 0)]],
@@ -141,84 +179,106 @@ _LETTER_STROKES = {
 }
 
 
-def letter_clusters(letters=("Г", "С", "Т"), n_points: int = 200, width: float = 0.08,
-                     seed: int = 3) -> tuple:
-    """Несиметричні кластери у формі літер (Г, С, П, Т, Е, Х)."""
-    rng = _rng(seed)
-    xs, ys, labels = [], [], []
-    spacing = 2.2
-    for idx, letter in enumerate(letters):
-        strokes = _LETTER_STROKES[letter]
-        per_stroke = max(1, n_points // len(strokes))
-        pts_all = []
-        for stroke in strokes:
-            pts_all.append(_sample_polyline(stroke, per_stroke, width, rng))
-        pts = np.concatenate(pts_all, axis=0)
-        pts[:, 0] += idx * spacing
-        xs.append(pts[:, 0])
-        ys.append(pts[:, 1])
-        labels.append(np.full(len(pts), idx))
-    X = np.column_stack([np.concatenate(xs), np.concatenate(ys)])
-    y = np.concatenate(labels)
-    return X, y, f"Несиметричні кластери у формі літер {', '.join(letters)}, seed={seed}"
+def sample_polyline(points, n, width, rng):
+    """Точки вздовж ламаної з гаусовим шумом упоперек лінії."""
+    pts = np.asarray(points, dtype=float)
+    seg = np.diff(pts, axis=0)
+    lens = np.linalg.norm(seg, axis=1)
+    cum = np.concatenate([[0], np.cumsum(lens)])
+    s = rng.uniform(0, cum[-1], n)
+    idx = np.clip(np.searchsorted(cum, s, side="right") - 1, 0, len(lens) - 1)
+    t = (s - cum[idx]) / lens[idx]
+    base = pts[idx] + seg[idx] * t[:, None]
+    direction = seg[idx] / lens[idx, None]
+    normal = np.column_stack([-direction[:, 1], direction[:, 0]])
+    return base + normal * rng.normal(scale=width, size=n)[:, None]
 
 
-def mixture(n_points: int = 150, seed: int = 4) -> tuple:
-    """Суміш різних типів кластерів у одному наборі: коло + еліпс (повернутий)
-    + квадрат + прямокутник (повернутий)."""
-    rng = _rng(seed)
+def letters(letters_seq, seed: int, gen: str, spacing: float, width: float, key: str) -> Dataset:
+    rng = make_rng(gen, seed)
     parts = []
-    labels = []
-
-    cx, cy, r = -6, -6, 1.4
-    ang = rng.uniform(0, 2 * np.pi, n_points)
-    rad = r * np.sqrt(rng.uniform(0, 1, n_points))
-    parts.append(np.column_stack([cx + rad * np.cos(ang), cy + rad * np.sin(ang)]))
-    labels.append(np.full(n_points, 0))
-
-    cx, cy = 6, -6
-    a, b, theta = 2.0, 0.6, rng.uniform(0, np.pi)
-    t, u = rng.normal(size=n_points), rng.normal(size=n_points)
-    pts = np.column_stack([a * t, b * u])
-    rot = np.array([[np.cos(theta), -np.sin(theta)], [np.sin(theta), np.cos(theta)]])
-    pts = pts @ rot.T
-    parts.append(np.column_stack([cx + pts[:, 0], cy + pts[:, 1]]))
-    labels.append(np.full(n_points, 1))
-
-    cx, cy, w = -6, 6, 1.6
-    pts = rng.uniform(-w, w, size=(n_points, 2))
-    parts.append(np.column_stack([cx + pts[:, 0], cy + pts[:, 1]]))
-    labels.append(np.full(n_points, 2))
-
-    cx, cy, w, h, theta = 6, 6, 2.0, 0.7, rng.uniform(0, np.pi / 2)
-    pts = rng.uniform(-1, 1, size=(n_points, 2)) * np.array([w, h])
-    rot = np.array([[np.cos(theta), -np.sin(theta)], [np.sin(theta), np.cos(theta)]])
-    pts = pts @ rot.T
-    parts.append(np.column_stack([cx + pts[:, 0], cy + pts[:, 1]]))
-    labels.append(np.full(n_points, 3))
-
-    X = np.concatenate(parts, axis=0)
-    y = np.concatenate(labels)
-    return X, y, "Суміш типів: коло, повернутий еліпс, квадрат, повернутий прямокутник"
+    for i, letter in enumerate(letters_seq):
+        strokes = LETTER_STROKES[letter]
+        lens = np.array([np.linalg.norm(np.diff(np.asarray(s, float), axis=0), axis=1).sum() for s in strokes])
+        counts = np.round(200 * lens / lens.sum()).astype(int)
+        pts = np.concatenate([sample_polyline(s, k, width, rng) for s, k in zip(strokes, counts)])
+        pts[:, 0] += i * spacing
+        parts.append((pts, i))
+    X, y = _assemble(parts)
+    return Dataset(key, f"Літери {', '.join(letters_seq)}", "несиметрична (літера)", "—",
+                   f"стохастичний ({gen}, нормальний шум уздовж штрихів)", X, y)
 
 
-def real_dataset() -> tuple:
-    """Реальний набір даних Iris (Fisher, 1936) -- 4 ознаки, 3 класи квітів."""
-    data = load_iris()
-    return data.data, data.target, "Реальний набір даних Iris (4 ознаки, 3 класи)"
+def rings(seed: int = 9, gen: str = "MT19937") -> Dataset:
+    """Інший варіант (п.2.7): концентричні кільця + ядро — класичний неопуклий випадок."""
+    rng = make_rng(gen, seed)
+    parts = [(1.0 * uniform_in_ball(150, 2, rng), 0)]
+    for i, (r, n) in enumerate([(3.0, 250), (5.5, 350)], start=1):
+        ang = rng.uniform(0, 2 * np.pi, n)
+        rad = r + rng.normal(scale=0.2, size=n)
+        parts.append((np.column_stack([rad * np.cos(ang), rad * np.sin(ang)]), i))
+    X, y = _assemble(parts)
+    return Dataset("rings", "Концентричні кільця з ядром", "кільце", "—",
+                   f"стохастичний ({gen}, нормальний шум по радіусу)", X, y)
 
 
-def all_datasets() -> dict:
-    """Повертає впорядкований словник {назва: (X, y_true, опис)} з усіма наборами,
-    що використовуються в дослідженні."""
-    return {
-        "circles_det": circles_deterministic(),
-        "circles_stoch": circles_stochastic(),
-        "ellipses_parallel": ellipses(parallel=True, seed=10),
-        "ellipses_nonparallel": ellipses(parallel=False, seed=11),
-        "squares_nonparallel": rectangles(square=True, parallel=False, seed=20),
-        "rectangles_parallel": rectangles(square=False, parallel=True, seed=21),
-        "letters": letter_clusters(),
-        "mixture": mixture(),
-        "real_iris": real_dataset(),
-    }
+def mixture(seed: int = 4, gen: str = "Philox") -> Dataset:
+    """Суміш типів: коло, повернутий еліпс, квадрат, повернутий прямокутник, літера С."""
+    rng = make_rng(gen, seed)
+    parts = [((-6, -6) + 1.4 * uniform_in_ball(150, 2, rng), 0)]
+    ell = uniform_in_ball(150, 2, rng) * np.array([2.2, 0.6]) @ rotation_2d(rng.uniform(0, np.pi)).T
+    parts.append(((6, -6) + ell, 1))
+    parts.append(((-6, 6) + rng.uniform(-1.5, 1.5, size=(150, 2)), 2))
+    rect = rng.uniform(-1, 1, size=(150, 2)) * np.array([2.2, 0.6]) @ rotation_2d(rng.uniform(0, np.pi)).T
+    parts.append(((6, 6) + rect, 3))
+    c_letter = sample_polyline(LETTER_STROKES["С"][0], 150, 0.1, rng) * 1.5 + np.array([-0.9, -1.5])
+    parts.append((c_letter, 4))
+    X, y = _assemble(parts)
+    return Dataset("mixture", "Суміш типів (коло, еліпс, квадрат, прямокутник, літера)", "суміш",
+                   "різна", f"стохастичний ({gen})", X, y)
+
+
+# ----------------------------------------------------------------- реальні дані
+def real_iris() -> Dataset:
+    d = load_iris()
+    return Dataset("real_iris", "Iris (реальні дані, 4 ознаки)", "реальні дані", "—",
+                   "реальний набір (Fisher, 1936)", d.data, d.target)
+
+
+def real_wine() -> Dataset:
+    d = load_wine()
+    X = StandardScaler().fit_transform(d.data)
+    return Dataset("real_wine", "Wine (реальні дані, 13 ознак, стандартизовано)", "реальні дані", "—",
+                   "реальний набір (UCI Wine)", X, d.target)
+
+
+def all_datasets() -> dict[str, Dataset]:
+    items = [
+        circles_deterministic(),
+        circles_stochastic(),
+        balls_3d(),
+        ellipses(parallel=True, seed=10),
+        ellipses(parallel=False, seed=11),
+        squares_parallel_deterministic(),
+        rectangles(square=True, parallel=False, seed=20, gen="Philox"),
+        rectangles(square=False, parallel=True, seed=21, gen="SFC64"),
+        rectangles(square=False, parallel=False, seed=22, gen="SFC64"),
+        boxes_3d_nonparallel(),
+        letters(("Г", "С", "Т"), seed=3, gen="PCG64", spacing=2.2, width=0.08, key="letters_gst"),
+        letters(("П", "Е", "Х"), seed=6, gen="MT19937", spacing=1.9, width=0.1, key="letters_pex"),
+        rings(),
+        mixture(),
+        real_iris(),
+        real_wine(),
+    ]
+    return {d.key: d for d in items}
+
+
+# Фабрики для дослідження впливу датчика випадкових чисел (різні seed і генератори)
+FAMILIES = {
+    "circles_stoch": lambda seed, gen: circles_stochastic(seed=seed, gen=gen),
+    "ellipses_nonparallel": lambda seed, gen: ellipses(parallel=False, seed=seed, gen=gen),
+    "rectangles_nonparallel": lambda seed, gen: rectangles(square=False, parallel=False, seed=seed, gen=gen),
+    "letters_gst": lambda seed, gen: letters(("Г", "С", "Т"), seed=seed, gen=gen, spacing=2.2, width=0.08,
+                                             key="letters_gst"),
+}

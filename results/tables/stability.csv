@@ -1,41 +1,876 @@
-dataset,algorithm,point_role,point_idx,delta,ARI_before_after,n_labels_changed
-circles_det,KMeans,внутрішня,44,0.01,1.0,0
-circles_det,KMeans,внутрішня,44,0.1,1.0,0
-circles_det,KMeans,внутрішня,44,0.5,1.0,0
-circles_det,KMeans,внутрішня,44,1.5,1.0,0
-circles_det,KMeans,межова,109,0.01,1.0,0
-circles_det,KMeans,межова,109,0.1,1.0,0
-circles_det,KMeans,межова,109,0.5,1.0,0
-circles_det,KMeans,межова,109,1.5,1.0,0
-circles_det,DBSCAN,внутрішня,44,0.01,1.0,0
-circles_det,DBSCAN,внутрішня,44,0.1,1.0,0
-circles_det,DBSCAN,внутрішня,44,0.5,1.0,0
-circles_det,DBSCAN,внутрішня,44,1.5,1.0,0
-circles_det,DBSCAN,межова,109,0.01,1.0,0
-circles_det,DBSCAN,межова,109,0.1,1.0,0
-circles_det,DBSCAN,межова,109,0.5,0.9958,1
-circles_det,DBSCAN,межова,109,1.5,0.9958,1
-letters,DBSCAN,внутрішня,168,0.01,1.0,0
-letters,DBSCAN,внутрішня,168,0.1,1.0,0
-letters,DBSCAN,внутрішня,168,0.5,0.9971,1
-letters,DBSCAN,внутрішня,168,1.5,0.9971,1
-letters,DBSCAN,межова,186,0.01,1.0,0
-letters,DBSCAN,межова,186,0.1,0.9824,210
-letters,DBSCAN,межова,186,0.5,0.9796,211
-letters,DBSCAN,межова,186,1.5,0.9796,211
-letters,KMeans,внутрішня,168,0.01,1.0,0
-letters,KMeans,внутрішня,168,0.1,1.0,0
-letters,KMeans,внутрішня,168,0.5,1.0,0
-letters,KMeans,внутрішня,168,1.5,0.995,1
-letters,KMeans,межова,186,0.01,1.0,0
-letters,KMeans,межова,186,0.1,1.0,0
-letters,KMeans,межова,186,0.5,1.0,0
-letters,KMeans,межова,186,1.5,1.0,0
-mixture,GaussianMixture,внутрішня,109,0.01,1.0,0
-mixture,GaussianMixture,внутрішня,109,0.1,1.0,0
-mixture,GaussianMixture,внутрішня,109,0.5,1.0,0
-mixture,GaussianMixture,внутрішня,109,1.5,1.0,0
-mixture,GaussianMixture,межова,76,0.01,1.0,0
-mixture,GaussianMixture,межова,76,0.1,1.0,0
-mixture,GaussianMixture,межова,76,0.5,1.0,0
-mixture,GaussianMixture,межова,76,1.5,1.0,0
+dataset,algorithm,scenario,delta,ARI_mean,ARI_min,changed_other_mean,changed_other_max,changed_moved_mean,k_changed_rate
+circles_det,KMeans,внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,внутрішня точка,2.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,межова точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,межова точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,межова точка,2.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,1% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,1% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,1% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,1% точок,2.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,5% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,5% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,5% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,5% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,5% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,5% точок,2.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,10% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,10% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,10% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,10% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,10% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,10% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,KMeans,10% точок,2.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,внутрішня точка,2.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,межова точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,межова точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,межова точка,2.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,1% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,1% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,1% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,1% точок,2.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,5% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,5% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,5% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,5% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,5% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,5% точок,2.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,10% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,10% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,10% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,10% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,10% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,10% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,GaussianMixture,10% точок,2.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,внутрішня точка,2.0,0.9986264099015741,0.9977106831692901,0.0,0,0.6,0.0
+circles_det,DBSCAN,межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,межова точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,межова точка,1.0,0.9986264099015741,0.9977106831692901,0.0,0,0.6,0.0
+circles_det,DBSCAN,межова точка,2.0,0.9981685465354321,0.9977106831692901,0.0,0,0.8,0.0
+circles_det,DBSCAN,1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,1% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,1% точок,0.5,0.9992339658794528,0.9961698293972636,0.0,0,0.2,0.0
+circles_det,DBSCAN,1% точок,1.0,0.9987761756373796,0.9969404390934493,0.0,0,0.4,0.0
+circles_det,DBSCAN,1% точок,2.0,0.993881538509144,0.9923501000694592,0.0,0,2.2,0.0
+circles_det,DBSCAN,5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,5% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,5% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,5% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,5% точок,0.5,0.9970915681033137,0.9915773279500145,0.0,0,1.0,0.0
+circles_det,DBSCAN,5% точок,1.0,0.989729648186233,0.9854596635305879,0.0,0,3.2,0.0
+circles_det,DBSCAN,5% точок,2.0,0.9703560670015772,0.9635304490812611,0.0,0,9.6,0.0
+circles_det,DBSCAN,10% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,10% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,10% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN,10% точок,0.25,0.9992339658794528,0.9961698293972636,0.0,0,0.2,0.0
+circles_det,DBSCAN,10% точок,0.5,0.995554281558172,0.9915773279500145,0.0,0,1.4,0.0
+circles_det,DBSCAN,10% точок,1.0,0.9815087859594908,0.97684764071988,0.2,1,5.4,0.0
+circles_det,DBSCAN,10% точок,2.0,0.9739471582449271,0.9681947247825078,0.0,0,8.2,0.0
+circles_det,Agglomerative(Ward),внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),внутрішня точка,2.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),межова точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),межова точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),межова точка,2.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),1% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),1% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),1% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),1% точок,2.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),5% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),5% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),5% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),5% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),5% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),5% точок,2.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),10% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),10% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),10% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),10% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),10% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),10% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,Agglomerative(Ward),10% точок,2.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),внутрішня точка,2.0,0.9986264099015741,0.9977106831692901,0.0,0,0.6,0.0
+circles_det,DBSCAN(фікс. eps),межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),межова точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),межова точка,1.0,0.9986264099015741,0.9977106831692901,0.0,0,0.6,0.0
+circles_det,DBSCAN(фікс. eps),межова точка,2.0,0.9981685465354321,0.9977106831692901,0.0,0,0.8,0.0
+circles_det,DBSCAN(фікс. eps),1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),1% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),1% точок,0.5,0.9992339658794528,0.9961698293972636,0.0,0,0.2,0.0
+circles_det,DBSCAN(фікс. eps),1% точок,1.0,0.9987761756373796,0.9969404390934493,0.0,0,0.4,0.0
+circles_det,DBSCAN(фікс. eps),1% точок,2.0,0.993881538509144,0.9923501000694592,0.0,0,2.2,0.0
+circles_det,DBSCAN(фікс. eps),5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),5% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),5% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),5% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),5% точок,0.5,0.9970915681033137,0.9915773279500145,0.0,0,1.0,0.0
+circles_det,DBSCAN(фікс. eps),5% точок,1.0,0.9877175733140238,0.9816926231901619,0.2,1,3.6,0.0
+circles_det,DBSCAN(фікс. eps),5% точок,2.0,0.9683256546013567,0.9604657896009968,0.0,0,10.2,0.0
+circles_det,DBSCAN(фікс. eps),10% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),10% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),10% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+circles_det,DBSCAN(фікс. eps),10% точок,0.25,0.9992339658794528,0.9961698293972636,0.0,0,0.2,0.0
+circles_det,DBSCAN(фікс. eps),10% точок,0.5,0.9947882474376248,0.9915773279500145,0.0,0,1.6,0.0
+circles_det,DBSCAN(фікс. eps),10% точок,1.0,0.9796506754395511,0.9737850994363946,0.4,1,5.8,0.0
+circles_det,DBSCAN(фікс. eps),10% точок,2.0,0.9260397520461646,0.9083738971365616,0.2,1,22.8,0.0
+ellipses_nonparallel,KMeans,внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,внутрішня точка,2.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,межова точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,межова точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,межова точка,2.0,0.9991096213771804,0.9955481068859018,0.0,0,0.2,0.0
+ellipses_nonparallel,KMeans,1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,1% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,1% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,1% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,1% точок,2.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,5% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,5% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,5% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,5% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,5% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,5% точок,2.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,10% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,10% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,10% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,10% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,10% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,10% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,KMeans,10% точок,2.0,0.9991096213771804,0.9955481068859018,0.0,0,0.2,0.0
+ellipses_nonparallel,GaussianMixture,внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,внутрішня точка,2.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,межова точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,межова точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,межова точка,2.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,1% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,1% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,1% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,1% точок,2.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,5% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,5% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,5% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,5% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,5% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,5% точок,2.0,0.9911502903121322,0.9779807397803937,0.0,0,2.0,0.0
+ellipses_nonparallel,GaussianMixture,10% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,10% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,10% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,10% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,10% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,10% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,GaussianMixture,10% точок,2.0,0.991141278870891,0.9822829562093416,0.0,0,2.0,0.0
+ellipses_nonparallel,DBSCAN,внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN,внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN,внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN,внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN,внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN,внутрішня точка,1.0,0.9986434917679332,0.9977391529465556,0.0,0,0.6,0.0
+ellipses_nonparallel,DBSCAN,внутрішня точка,2.0,0.9977391529465557,0.9977391529465556,0.0,0,1.0,0.0
+ellipses_nonparallel,DBSCAN,межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN,межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN,межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN,межова точка,0.25,0.9990956611786223,0.9977391529465556,0.0,0,0.4,0.0
+ellipses_nonparallel,DBSCAN,межова точка,0.5,0.9986434917679332,0.9977391529465556,0.0,0,0.6,0.0
+ellipses_nonparallel,DBSCAN,межова точка,1.0,0.9977391529465557,0.9977391529465556,0.0,0,1.0,0.0
+ellipses_nonparallel,DBSCAN,межова точка,2.0,0.9977391529465557,0.9977391529465556,0.0,0,1.0,0.0
+ellipses_nonparallel,DBSCAN,1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN,1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN,1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN,1% точок,0.25,0.9995478305893112,0.9977391529465556,0.0,0,0.2,0.0
+ellipses_nonparallel,DBSCAN,1% точок,0.5,0.9963976089610787,0.9954583117975209,0.6,1,1.0,0.0
+ellipses_nonparallel,DBSCAN,1% точок,1.0,0.9914967102709834,0.9910215470848679,1.0,1,2.8,0.0
+ellipses_nonparallel,DBSCAN,1% точок,2.0,0.9843298716153095,0.9820409755381232,1.2,2,5.8,0.0
+ellipses_nonparallel,DBSCAN,5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN,5% точок,0.05,0.999107652691869,0.9977691317296722,0.2,1,0.2,0.0
+ellipses_nonparallel,DBSCAN,5% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN,5% точок,0.25,0.98671327676141,0.9621370382417826,5.8,19,0.8,0.4
+ellipses_nonparallel,DBSCAN,5% точок,0.5,0.9870095692018678,0.9822594416010372,1.2,2,4.6,0.0
+ellipses_nonparallel,DBSCAN,5% точок,1.0,0.966950933667364,0.9635982068705378,1.8,2,12.8,0.0
+ellipses_nonparallel,DBSCAN,5% точок,2.0,0.95868115619609,0.9455820536490143,2.0,2,16.2,0.2
+ellipses_nonparallel,DBSCAN,10% точок,0.01,0.999107652691869,0.9977691317296722,0.4,1,0.0,0.0
+ellipses_nonparallel,DBSCAN,10% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN,10% точок,0.1,0.9973178965197513,0.9955281677453124,0.8,2,0.4,0.0
+ellipses_nonparallel,DBSCAN,10% точок,0.25,0.9941976291656214,0.9888903230600009,1.0,2,1.6,0.0
+ellipses_nonparallel,DBSCAN,10% точок,0.5,0.9848982024583404,0.979864604062089,1.8,2,5.0,0.0
+ellipses_nonparallel,DBSCAN,10% точок,1.0,0.9725388308298848,0.9662702237048748,1.8,2,10.4,0.0
+ellipses_nonparallel,DBSCAN,10% точок,2.0,0.978562368558966,0.9689590480939363,1.8,2,6.8,0.0
+ellipses_nonparallel,Agglomerative(Ward),внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),внутрішня точка,2.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),межова точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),межова точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),межова точка,2.0,0.9991096213771804,0.9955481068859018,0.0,0,0.2,0.0
+ellipses_nonparallel,Agglomerative(Ward),1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),1% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),1% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),1% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),1% точок,2.0,0.9991096213771804,0.9955481068859018,0.0,0,0.2,0.0
+ellipses_nonparallel,Agglomerative(Ward),5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),5% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),5% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),5% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),5% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),5% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),5% точок,2.0,0.9982222206092866,0.9911111030464326,0.0,0,0.4,0.0
+ellipses_nonparallel,Agglomerative(Ward),10% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),10% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),10% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),10% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),10% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),10% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,Agglomerative(Ward),10% точок,2.0,0.9946757541955435,0.9867344503200121,0.0,0,1.2,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),внутрішня точка,1.0,0.9986434917679332,0.9977391529465556,0.0,0,0.6,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),внутрішня точка,2.0,0.9977391529465557,0.9977391529465556,0.0,0,1.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),межова точка,0.25,0.9990956611786223,0.9977391529465556,0.0,0,0.4,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),межова точка,0.5,0.9986434917679332,0.9977391529465556,0.0,0,0.6,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),межова точка,1.0,0.9977391529465557,0.9977391529465556,0.0,0,1.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),межова точка,2.0,0.9977391529465557,0.9977391529465556,0.0,0,1.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),1% точок,0.25,0.9990976716694083,0.9954883583470415,0.0,0,0.4,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),1% точок,0.5,0.9963877315613623,0.9909719935666582,0.6,3,1.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),1% точок,1.0,0.9923325236792795,0.988766885163839,0.4,2,3.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),1% точок,2.0,0.9846849133050316,0.9797199242064546,1.0,3,5.8,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),5% точок,0.05,0.999107652691869,0.9977691317296722,0.2,1,0.2,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),5% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),5% точок,0.25,0.9875503005415543,0.9640792364383555,5.0,18,1.0,0.2
+ellipses_nonparallel,DBSCAN(фікс. eps),5% точок,0.5,0.9736077089001494,0.9476717965400063,5.4,17,6.6,0.4
+ellipses_nonparallel,DBSCAN(фікс. eps),5% точок,1.0,0.9419544391873806,0.9161171904148603,6.6,17,19.0,0.4
+ellipses_nonparallel,DBSCAN(фікс. eps),5% точок,2.0,0.9297688031383743,0.8965301015449468,4.0,18,26.4,0.2
+ellipses_nonparallel,DBSCAN(фікс. eps),10% точок,0.01,0.999107652691869,0.9977691317296722,0.4,1,0.0,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),10% точок,0.05,0.9928745335128927,0.9643726675644633,3.6,18,0.0,0.2
+ellipses_nonparallel,DBSCAN(фікс. eps),10% точок,0.1,0.9959684636451234,0.9932025303079056,1.0,2,0.8,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),10% точок,0.25,0.9923351490328362,0.981912919009032,1.0,3,2.4,0.0
+ellipses_nonparallel,DBSCAN(фікс. eps),10% точок,0.5,0.9449168042978846,0.9165800357707486,12.8,29,13.4,0.6
+ellipses_nonparallel,DBSCAN(фікс. eps),10% точок,1.0,0.8977269028114476,0.8809980466629096,9.4,18,34.6,0.6
+ellipses_nonparallel,DBSCAN(фікс. eps),10% точок,2.0,0.8195187656085166,0.7542393093716908,27.4,66,52.0,1.0
+letters_gst,KMeans,внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,внутрішня точка,2.0,0.9969974875105738,0.9949958125176231,0.0,0,0.6,0.0
+letters_gst,KMeans,межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,межова точка,0.5,0.9989991625035246,0.9949958125176231,0.0,0,0.2,0.0
+letters_gst,KMeans,межова точка,1.0,0.9979983250070493,0.9949958125176231,0.0,0,0.4,0.0
+letters_gst,KMeans,межова точка,2.0,0.9969974875105738,0.9949958125176231,0.0,0,0.6,0.0
+letters_gst,KMeans,1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,1% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,1% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,1% точок,1.0,0.9989991625035246,0.9949958125176231,0.0,0,0.2,0.0
+letters_gst,KMeans,1% точок,2.0,0.9920033586954486,0.9850125211993978,0.0,0,1.6,0.0
+letters_gst,KMeans,5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,5% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,5% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,5% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,5% точок,0.5,0.9979983250070493,0.9949958125176231,0.0,0,0.4,0.0
+letters_gst,KMeans,5% точок,1.0,0.9880380196001397,0.9800845066199756,0.0,0,2.4,0.0
+letters_gst,KMeans,5% точок,2.0,0.9371452095286816,0.9311053710539166,0.0,0,12.8,0.0
+letters_gst,KMeans,10% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,10% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,10% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,10% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,KMeans,10% точок,0.5,0.9950008292469288,0.9900041668585104,0.0,0,1.0,0.0
+letters_gst,KMeans,10% точок,1.0,0.9771348095502571,0.9702521723567897,0.0,0,4.6,0.0
+letters_gst,KMeans,10% точок,2.0,0.8740682244457594,0.8521193618929702,0.0,0,26.2,0.0
+letters_gst,GaussianMixture,внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,внутрішня точка,2.0,0.9969974875105738,0.9949958125176231,0.0,0,0.6,0.0
+letters_gst,GaussianMixture,межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,межова точка,0.25,0.9989991625035246,0.9949958125176231,0.0,0,0.2,0.0
+letters_gst,GaussianMixture,межова точка,0.5,0.9989991625035246,0.9949958125176231,0.0,0,0.2,0.0
+letters_gst,GaussianMixture,межова точка,1.0,0.9979983250070493,0.9949958125176231,0.0,0,0.4,0.0
+letters_gst,GaussianMixture,межова точка,2.0,0.9969974875105738,0.9949958125176231,0.0,0,0.6,0.0
+letters_gst,GaussianMixture,1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,1% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,1% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,1% точок,1.0,0.9980033333333334,0.9900166666666667,0.0,0,0.4,0.0
+letters_gst,GaussianMixture,1% точок,2.0,0.9920033586954486,0.9850125211993978,0.0,0,1.6,0.0
+letters_gst,GaussianMixture,5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,5% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,5% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,5% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,5% точок,0.5,0.9969974875105739,0.9949958125176231,0.0,0,0.6,0.0
+letters_gst,GaussianMixture,5% точок,1.0,0.995003379647166,0.9900042509932298,0.0,0,1.0,0.0
+letters_gst,GaussianMixture,5% точок,2.0,0.9351515738164181,0.9262889564937472,0.0,0,13.2,0.0
+letters_gst,GaussianMixture,10% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,10% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,10% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,GaussianMixture,10% точок,0.25,0.9989991625035246,0.9949958125176231,0.0,0,0.2,0.0
+letters_gst,GaussianMixture,10% точок,0.5,0.9950008544555692,0.9900168347249766,0.0,0,1.0,0.0
+letters_gst,GaussianMixture,10% точок,1.0,0.9791006328642273,0.9700892620761766,0.0,0,4.2,0.0
+letters_gst,GaussianMixture,10% точок,2.0,0.8766006724531523,0.8653344029430514,0.0,0,25.6,0.0
+letters_gst,DBSCAN,внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,DBSCAN,внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,DBSCAN,внутрішня точка,0.1,0.998893660435218,0.9972341510880448,0.0,0,0.4,0.0
+letters_gst,DBSCAN,внутрішня точка,0.25,0.998893660435218,0.9972341510880448,0.0,0,0.4,0.0
+letters_gst,DBSCAN,внутрішня точка,0.5,0.998893660435218,0.9972341510880448,0.0,0,0.4,0.0
+letters_gst,DBSCAN,внутрішня точка,1.0,0.997787320870436,0.9972341510880448,0.0,0,0.8,0.0
+letters_gst,DBSCAN,внутрішня точка,2.0,0.9968918625782253,0.9955227085389474,0.0,0,1.0,0.0
+letters_gst,DBSCAN,межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,DBSCAN,межова точка,0.05,0.9274267747887682,0.8790446246479472,44.4,74,0.0,0.6
+letters_gst,DBSCAN,межова точка,0.1,0.9510665666633589,0.8762882086688472,29.6,74,0.2,0.4
+letters_gst,DBSCAN,межова точка,0.25,0.9015818501308978,0.8762882086688472,59.2,74,0.6,0.8
+letters_gst,DBSCAN,межова точка,0.5,0.9015818501308978,0.8762882086688472,59.2,74,0.6,0.8
+letters_gst,DBSCAN,межова точка,1.0,0.9010305669350777,0.8762882086688472,59.2,74,0.8,0.8
+letters_gst,DBSCAN,межова точка,2.0,0.8996455217978199,0.8738402744436102,59.2,74,1.0,0.8
+letters_gst,DBSCAN,1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,DBSCAN,1% точок,0.05,0.9516178498591789,0.8790446246479472,29.2,73,0.4,0.4
+letters_gst,DBSCAN,1% точок,0.1,0.9758089249295894,0.8790446246479472,14.6,73,0.2,0.2
+letters_gst,DBSCAN,1% точок,0.25,0.8893164224553594,0.8779400747904537,63.6,73,2.0,0.8
+letters_gst,DBSCAN,1% точок,0.5,0.8680538364287713,0.862467378441905,73.8,74,4.6,1.0
+letters_gst,DBSCAN,1% точок,1.0,0.8727305847953879,0.8703651030582124,72.4,73,4.6,1.0
+letters_gst,DBSCAN,1% точок,2.0,0.8639176108695559,0.8621115579897757,73.6,74,5.8,1.0
+letters_gst,DBSCAN,5% точок,0.01,0.9758089249295894,0.8790446246479472,14.0,70,0.8,0.2
+letters_gst,DBSCAN,5% точок,0.05,0.9274267747887682,0.8790446246479472,41.6,70,2.8,0.6
+letters_gst,DBSCAN,5% точок,0.1,0.8800246593086574,0.8762882086688472,67.6,73,4.2,0.8
+letters_gst,DBSCAN,5% точок,0.25,0.8678478317694258,0.8650692546484708,70.0,74,9.2,1.0
+letters_gst,DBSCAN,5% точок,0.5,0.8505745564115086,0.8447340695442824,72.0,74,14.2,1.0
+letters_gst,DBSCAN,5% точок,1.0,0.8491543120843434,0.8396000941829629,71.2,73,15.6,1.0
+letters_gst,DBSCAN,5% точок,2.0,0.6652567816661963,0.4435612552688668,117.4,192,25.0,1.0
+letters_gst,DBSCAN,10% точок,0.01,0.9274267747887682,0.8790446246479472,39.0,67,5.4,0.6
+letters_gst,DBSCAN,10% точок,0.05,0.944894456211425,0.8782394992104071,29.8,70,2.6,0.4
+letters_gst,DBSCAN,10% точок,0.1,0.9009425308533159,0.871117930300662,52.8,69,7.4,0.8
+letters_gst,DBSCAN,10% точок,0.25,0.867718994431433,0.861975260874315,67.8,70,11.4,1.0
+letters_gst,DBSCAN,10% точок,0.5,0.8649552377791689,0.8585092377643468,69.0,71,11.2,1.0
+letters_gst,DBSCAN,10% точок,1.0,0.18772246363779277,-0.0006828711858253034,287.8,364,36.0,1.0
+letters_gst,DBSCAN,10% точок,2.0,-0.0016292986627271145,-0.005015359794544648,361.0,364,40.0,1.0
+letters_gst,Agglomerative(Ward),внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),внутрішня точка,2.0,0.9969974875105738,0.9949958125176231,0.0,0,0.6,0.0
+letters_gst,Agglomerative(Ward),межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),межова точка,0.5,0.9989991625035246,0.9949958125176231,0.0,0,0.2,0.0
+letters_gst,Agglomerative(Ward),межова точка,1.0,0.9979983250070493,0.9949958125176231,0.0,0,0.4,0.0
+letters_gst,Agglomerative(Ward),межова точка,2.0,0.9969974875105738,0.9949958125176231,0.0,0,0.6,0.0
+letters_gst,Agglomerative(Ward),1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),1% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),1% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),1% точок,1.0,0.9989991625035246,0.9949958125176231,0.0,0,0.2,0.0
+letters_gst,Agglomerative(Ward),1% точок,2.0,0.9910075295252575,0.9850125211993978,0.0,0,1.8,0.0
+letters_gst,Agglomerative(Ward),5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),5% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),5% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),5% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),5% точок,0.5,0.9979983250070493,0.9949958125176231,0.0,0,0.4,0.0
+letters_gst,Agglomerative(Ward),5% точок,1.0,0.9870524406734706,0.9751818207189017,0.0,0,2.6,0.0
+letters_gst,Agglomerative(Ward),5% точок,2.0,0.9341951116368852,0.9310382563624404,0.0,0,13.4,0.0
+letters_gst,Agglomerative(Ward),10% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),10% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),10% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),10% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,Agglomerative(Ward),10% точок,0.5,0.9989991625035246,0.9949958125176231,0.0,0,0.2,0.0
+letters_gst,Agglomerative(Ward),10% точок,1.0,0.9693212480917847,0.9556410646003798,0.0,0,6.2,0.0
+letters_gst,Agglomerative(Ward),10% точок,2.0,0.8803643147536153,0.8653344029430514,0.0,0,24.8,0.0
+letters_gst,DBSCAN(фікс. eps),внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,DBSCAN(фікс. eps),внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,DBSCAN(фікс. eps),внутрішня точка,0.1,0.998893660435218,0.9972341510880448,0.0,0,0.4,0.0
+letters_gst,DBSCAN(фікс. eps),внутрішня точка,0.25,0.998893660435218,0.9972341510880448,0.0,0,0.4,0.0
+letters_gst,DBSCAN(фікс. eps),внутрішня точка,0.5,0.998893660435218,0.9972341510880448,0.0,0,0.4,0.0
+letters_gst,DBSCAN(фікс. eps),внутрішня точка,1.0,0.997787320870436,0.9972341510880448,0.0,0,0.8,0.0
+letters_gst,DBSCAN(фікс. eps),внутрішня точка,2.0,0.9968918625782253,0.9955227085389474,0.0,0,1.0,0.0
+letters_gst,DBSCAN(фікс. eps),межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,DBSCAN(фікс. eps),межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,DBSCAN(фікс. eps),межова точка,0.1,0.9994468302176089,0.9972341510880448,0.0,0,0.2,0.0
+letters_gst,DBSCAN(фікс. eps),межова точка,0.25,0.9983404906528269,0.9972341510880448,0.0,0,0.6,0.0
+letters_gst,DBSCAN(фікс. eps),межова точка,0.5,0.9983404906528269,0.9972341510880448,0.0,0,0.6,0.0
+letters_gst,DBSCAN(фікс. eps),межова точка,1.0,0.9977873208704358,0.9972341510880448,0.0,0,0.8,0.0
+letters_gst,DBSCAN(фікс. eps),межова точка,2.0,0.9965495740684058,0.9955227085389474,0.0,0,1.0,0.0
+letters_gst,DBSCAN(фікс. eps),1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,DBSCAN(фікс. eps),1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,DBSCAN(фікс. eps),1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,DBSCAN(фікс. eps),1% точок,0.25,0.9895349077885738,0.9589951418697772,5.8,28,1.8,0.2
+letters_gst,DBSCAN(фікс. eps),1% точок,0.5,0.9872946555967083,0.9833480489876877,0.0,0,4.8,0.0
+letters_gst,DBSCAN(фікс. eps),1% точок,1.0,0.9906202270778998,0.9886329036356507,0.0,0,4.6,0.0
+letters_gst,DBSCAN(фікс. eps),1% точок,2.0,0.9827541247291247,0.9773035418057391,0.4,2,5.8,0.0
+letters_gst,DBSCAN(фікс. eps),5% точок,0.01,0.9758089249295894,0.8790446246479472,14.0,70,0.8,0.2
+letters_gst,DBSCAN(фікс. eps),5% точок,0.05,0.9516178498591789,0.8790446246479472,27.6,70,2.0,0.4
+letters_gst,DBSCAN(фікс. eps),5% точок,0.1,0.9962886831808626,0.9889934945346744,2.6,13,0.8,0.2
+letters_gst,DBSCAN(фікс. eps),5% точок,0.25,0.9806598830720148,0.9762030937291543,1.0,2,7.4,0.0
+letters_gst,DBSCAN(фікс. eps),5% точок,0.5,0.9041923567076328,0.8300425975518891,29.2,74,20.2,0.4
+letters_gst,DBSCAN(фікс. eps),5% точок,1.0,0.9401993876908927,0.9339026880873453,0.2,1,25.4,0.0
+letters_gst,DBSCAN(фікс. eps),5% точок,2.0,0.9260992597765296,0.9215679286680911,0.2,1,29.6,0.0
+letters_gst,DBSCAN(фікс. eps),10% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+letters_gst,DBSCAN(фікс. eps),10% точок,0.05,0.9951861308328647,0.981114251372102,2.2,10,0.8,0.2
+letters_gst,DBSCAN(фікс. eps),10% точок,0.1,0.9731317831405863,0.8790446246479472,13.6,66,2.4,0.2
+letters_gst,DBSCAN(фікс. eps),10% точок,0.25,0.9275457906935773,0.8216913107446336,21.6,74,18.0,0.6
+letters_gst,DBSCAN(фікс. eps),10% точок,0.5,0.8881183208289801,0.8466473473706534,3.0,11,41.6,0.4
+letters_gst,DBSCAN(фікс. eps),10% точок,1.0,0.8410218003762745,0.7627438738794073,17.4,69,53.6,0.4
+letters_gst,DBSCAN(фікс. eps),10% точок,2.0,0.8300175641131211,0.79046470869006,10.8,36,59.6,0.6
+rings,KMeans,внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+rings,KMeans,внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+rings,KMeans,внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+rings,KMeans,внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+rings,KMeans,внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+rings,KMeans,внутрішня точка,1.0,0.9991357212503793,0.9956786062518962,0.0,0,0.2,0.0
+rings,KMeans,внутрішня точка,2.0,0.9982959337385381,0.9956786062518962,0.0,0,0.4,0.0
+rings,KMeans,межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+rings,KMeans,межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+rings,KMeans,межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+rings,KMeans,межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+rings,KMeans,межова точка,0.5,0.998320424976318,0.9958010624407948,0.0,0,0.4,0.0
+rings,KMeans,межова точка,1.0,0.999160212488159,0.9958010624407948,0.0,0,0.2,0.0
+rings,KMeans,межова точка,2.0,0.998320424976318,0.9958010624407948,0.0,0,0.4,0.0
+rings,KMeans,1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+rings,KMeans,1% точок,0.05,0.9991362935048527,0.9956814675242629,0.0,0,0.2,0.0
+rings,KMeans,1% точок,0.1,0.9991362935048527,0.9956814675242629,0.0,0,0.2,0.0
+rings,KMeans,1% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+rings,KMeans,1% точок,0.5,0.9982307111152269,0.9970511851920448,0.6,1,0.0,0.0
+rings,KMeans,1% точок,1.0,0.9905479008301061,0.9615861402969286,2.4,10,0.2,0.0
+rings,KMeans,1% точок,2.0,0.976103408711473,0.9518071533463227,3.8,10,2.4,0.0
+rings,KMeans,5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+rings,KMeans,5% точок,0.05,0.9976864680094255,0.9913811548550827,0.4,1,0.2,0.0
+rings,KMeans,5% точок,0.1,0.985421619093702,0.9615861402969286,2.6,9,1.2,0.0
+rings,KMeans,5% точок,0.25,0.9823923950746802,0.9303920025670094,3.6,14,0.8,0.0
+rings,KMeans,5% точок,0.5,0.8737541787146752,0.4471903344567884,35.8,166,3.4,0.0
+rings,KMeans,5% точок,1.0,0.7700381627051449,0.38455122784066453,72.6,218,6.4,0.0
+rings,KMeans,5% точок,2.0,0.7552315770111308,0.4633249893078198,67.0,164,8.0,0.0
+rings,KMeans,10% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+rings,KMeans,10% точок,0.05,0.9982307111152269,0.9970511851920448,0.2,1,0.4,0.0
+rings,KMeans,10% точок,0.1,0.9919790825601904,0.9870990959454458,0.8,2,1.2,0.0
+rings,KMeans,10% точок,0.25,0.8704805512944871,0.4153038694299491,40.0,193,6.0,0.0
+rings,KMeans,10% точок,0.5,0.9419599001328429,0.9182509590657493,8.0,14,6.6,0.0
+rings,KMeans,10% точок,1.0,0.9074316079074329,0.8481484905458764,13.6,22,9.4,0.0
+rings,KMeans,10% точок,2.0,0.8416444801014151,0.7247822816721053,24.0,59,18.4,0.0
+rings,GaussianMixture,внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+rings,GaussianMixture,внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+rings,GaussianMixture,внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+rings,GaussianMixture,внутрішня точка,0.25,0.8292939505648311,0.1464697528241557,46.4,232,0.0,0.0
+rings,GaussianMixture,внутрішня точка,0.5,0.8268525439066081,0.14562142360615027,47.0,233,0.0,0.0
+rings,GaussianMixture,внутрішня точка,1.0,0.8256973118989934,0.14562142360615027,47.2,233,0.0,0.0
+rings,GaussianMixture,внутрішня точка,2.0,0.7614550817700092,0.1464697528241557,61.2,232,0.0,0.0
+rings,GaussianMixture,межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+rings,GaussianMixture,межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+rings,GaussianMixture,межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+rings,GaussianMixture,межова точка,0.25,0.8291242847212301,0.14562142360615027,46.6,233,0.0,0.0
+rings,GaussianMixture,межова точка,0.5,0.8265204370909665,0.14396088952794148,47.4,235,0.0,0.0
+rings,GaussianMixture,межова точка,1.0,0.8253845666836555,0.14396088952794148,47.6,235,0.0,0.0
+rings,GaussianMixture,межова точка,2.0,0.7560490189187721,0.14314857040159976,65.6,236,0.0,0.0
+rings,GaussianMixture,1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+rings,GaussianMixture,1% точок,0.05,0.8292939505648311,0.1464697528241557,46.0,230,0.4,0.0
+rings,GaussianMixture,1% точок,0.1,0.6526657716728723,0.14376654014389575,91.8,228,1.2,0.0
+rings,GaussianMixture,1% точок,0.25,0.8155195827798998,0.1464697528241557,47.8,228,1.0,0.0
+rings,GaussianMixture,1% точок,0.5,0.6514005496495071,0.14478515500024644,93.6,231,0.8,0.0
+rings,GaussianMixture,1% точок,1.0,0.7833631062788924,0.14548885155612104,60.6,256,0.8,0.0
+rings,GaussianMixture,1% точок,2.0,0.8499629304098202,0.7701176060412139,37.8,62,0.4,0.0
+rings,GaussianMixture,5% точок,0.01,0.8279690527136154,0.14562142360615027,44.6,222,2.2,0.0
+rings,GaussianMixture,5% точок,0.05,0.3171581375367111,0.14464835552543776,174.8,221,9.8,0.0
+rings,GaussianMixture,5% точок,0.1,0.5231675325556788,0.14562142360615027,127.6,222,5.8,0.0
+rings,GaussianMixture,5% точок,0.25,0.6340827658552584,0.13679819910387517,93.6,225,4.8,0.0
+rings,GaussianMixture,5% точок,0.5,0.8822328983389645,0.8134834840790917,27.0,52,1.8,0.0
+rings,GaussianMixture,5% точок,1.0,0.8560028492213043,0.8215446522541007,33.2,48,3.4,0.0
+rings,GaussianMixture,5% точок,2.0,0.5772531815511861,0.07783252348951082,107.2,237,10.6,0.0
+rings,GaussianMixture,10% точок,0.01,0.6562967987147367,0.1464697528241557,82.4,212,10.8,0.0
+rings,GaussianMixture,10% точок,0.05,0.6522496139931944,0.14733020083111156,82.8,207,10.6,0.0
+rings,GaussianMixture,10% точок,0.1,0.6459128451160745,0.1428194738926836,83.8,212,11.0,0.0
+rings,GaussianMixture,10% точок,0.25,0.8953939057284422,0.6374958869727221,24.6,99,3.4,0.0
+rings,GaussianMixture,10% точок,0.5,0.7260433504223605,0.11981683012915927,67.6,229,7.2,0.0
+rings,GaussianMixture,10% точок,1.0,0.5454923292209648,0.1194791855091903,108.0,231,16.4,0.0
+rings,GaussianMixture,10% точок,2.0,0.4412044249489586,0.09733054086842925,143.8,285,21.6,0.0
+rings,DBSCAN,внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN,внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN,внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN,внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN,внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN,внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN,внутрішня точка,2.0,0.9987718605681424,0.9987718605681425,0.0,0,1.0,0.0
+rings,DBSCAN,межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN,межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN,межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN,межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN,межова точка,0.5,0.9997543721136285,0.9987718605681425,0.0,0,0.2,0.0
+rings,DBSCAN,межова точка,1.0,0.9997543721136285,0.9987718605681425,0.0,0,0.2,0.0
+rings,DBSCAN,межова точка,2.0,0.9976007639019906,0.9968200327912227,0.0,0,1.0,0.0
+rings,DBSCAN,1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN,1% точок,0.05,0.9999585441858365,0.9997927209291819,0.2,1,0.0,0.0
+rings,DBSCAN,1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN,1% точок,0.25,0.9179997322118995,0.7819757207977577,47.4,136,0.8,0.4
+rings,DBSCAN,1% точок,0.5,0.9710529472304656,0.8585285500194286,12.6,63,1.0,0.2
+rings,DBSCAN,1% точок,1.0,0.9929750263479861,0.98815289187473,0.8,4,3.0,0.2
+rings,DBSCAN,1% точок,2.0,0.9862916167734863,0.9786224960146649,0.0,0,5.4,0.0
+rings,DBSCAN,5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN,5% точок,0.05,0.9009509748309558,0.6956698593290108,57.8,194,4.0,0.4
+rings,DBSCAN,5% точок,0.1,0.8908577579181125,0.8088743345370321,53.4,97,3.4,0.8
+rings,DBSCAN,5% точок,0.25,0.7807313057194338,0.6706127057005224,112.4,175,8.6,1.0
+rings,DBSCAN,5% точок,0.5,0.8266398407007272,0.6980185281664633,86.0,147,5.8,1.0
+rings,DBSCAN,5% точок,1.0,0.8687952439763558,0.7816729822911146,59.6,105,12.8,0.6
+rings,DBSCAN,5% точок,2.0,0.8098451690037946,0.3604629768906496,55.6,259,25.8,0.2
+rings,DBSCAN,10% точок,0.01,0.9236340059303074,0.8090850148257686,37.2,95,3.6,0.4
+rings,DBSCAN,10% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN,10% точок,0.1,0.8119280781071053,0.6711606015123237,96.4,160,11.4,1.0
+rings,DBSCAN,10% точок,0.25,0.7837804774378111,0.7443752775668298,103.2,134,12.8,1.0
+rings,DBSCAN,10% точок,0.5,0.8659191948612787,0.7348477041781601,65.4,127,10.2,0.6
+rings,DBSCAN,10% точок,1.0,0.6771032477165069,-0.0029302545868037776,123.2,385,22.0,1.0
+rings,DBSCAN,10% точок,2.0,0.23247226774353322,-0.006352154646951413,293.6,381,50.0,1.0
+rings,Agglomerative(Ward),внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+rings,Agglomerative(Ward),внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+rings,Agglomerative(Ward),внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+rings,Agglomerative(Ward),внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+rings,Agglomerative(Ward),внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+rings,Agglomerative(Ward),внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+rings,Agglomerative(Ward),внутрішня точка,2.0,0.9966069126867092,0.9956405754786727,0.0,0,0.8,0.0
+rings,Agglomerative(Ward),межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+rings,Agglomerative(Ward),межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+rings,Agglomerative(Ward),межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+rings,Agglomerative(Ward),межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+rings,Agglomerative(Ward),межова точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+rings,Agglomerative(Ward),межова точка,1.0,0.9991281150957345,0.9956405754786727,0.0,0,0.2,0.0
+rings,Agglomerative(Ward),межова точка,2.0,0.9965754285854521,0.9956405754786727,0.0,0,0.8,0.0
+rings,Agglomerative(Ward),1% точок,0.01,0.8938940358857929,0.46947017942896446,33.6,168,0.4,0.0
+rings,Agglomerative(Ward),1% точок,0.05,0.731522727653996,0.2612730784990729,119.4,368,1.4,0.0
+rings,Agglomerative(Ward),1% точок,0.1,0.8938940358857929,0.46947017942896446,33.2,166,0.8,0.0
+rings,Agglomerative(Ward),1% точок,0.25,0.49126757826212514,0.09009329185867092,185.6,357,1.2,0.0
+rings,Agglomerative(Ward),1% точок,0.5,0.5318028206255694,0.06427643177123672,162.2,358,1.2,0.0
+rings,Agglomerative(Ward),1% точок,1.0,0.3280575688949858,0.05804554851067734,267.6,380,1.6,0.0
+rings,Agglomerative(Ward),1% точок,2.0,0.4404970020664168,0.09101267693090234,223.6,354,3.4,0.0
+rings,Agglomerative(Ward),5% точок,0.01,0.7877880717715857,0.46947017942896446,64.2,161,3.8,0.0
+rings,Agglomerative(Ward),5% точок,0.05,0.4243723236017797,0.2539543046833699,209.8,335,8.8,0.0
+rings,Agglomerative(Ward),5% точок,0.1,0.4676977112477207,0.25789034845123904,226.2,357,10.6,0.0
+rings,Agglomerative(Ward),5% точок,0.25,0.28119007939887497,0.14675142077608896,236.8,284,12.0,0.0
+rings,Agglomerative(Ward),5% точок,0.5,0.3860955886423304,0.145994882642347,193.4,295,12.6,0.0
+rings,Agglomerative(Ward),5% точок,1.0,0.24844328131692697,0.057352840557078066,290.6,362,15.0,0.0
+rings,Agglomerative(Ward),5% точок,2.0,0.4351975787424017,0.23453953780306075,193.2,259,14.0,0.0
+rings,Agglomerative(Ward),10% точок,0.01,0.6024523429854799,0.07332135606947081,123.8,312,13.4,0.0
+rings,Agglomerative(Ward),10% точок,0.05,0.3199387616793833,0.05505554923102679,233.0,338,26.2,0.0
+rings,Agglomerative(Ward),10% точок,0.1,0.3454931180177335,0.0195090478161704,239.4,398,24.6,0.0
+rings,Agglomerative(Ward),10% точок,0.25,0.4925678125473942,0.15278996795128708,162.0,281,18.8,0.0
+rings,Agglomerative(Ward),10% точок,0.5,0.49745783918334113,0.1896620359808815,166.8,309,20.4,0.0
+rings,Agglomerative(Ward),10% точок,1.0,0.31279465001117795,0.07884176923430371,224.0,322,24.8,0.0
+rings,Agglomerative(Ward),10% точок,2.0,0.16981477093001315,0.05516533707122036,286.2,338,30.2,0.0
+rings,DBSCAN(фікс. eps),внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN(фікс. eps),внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN(фікс. eps),внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN(фікс. eps),внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN(фікс. eps),внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN(фікс. eps),внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN(фікс. eps),внутрішня точка,2.0,0.9987718605681424,0.9987718605681425,0.0,0,1.0,0.0
+rings,DBSCAN(фікс. eps),межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN(фікс. eps),межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN(фікс. eps),межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN(фікс. eps),межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN(фікс. eps),межова точка,0.5,0.9997543721136285,0.9987718605681425,0.0,0,0.2,0.0
+rings,DBSCAN(фікс. eps),межова точка,1.0,0.9997543721136285,0.9987718605681425,0.0,0,0.2,0.0
+rings,DBSCAN(фікс. eps),межова точка,2.0,0.9976007639019906,0.9968200327912227,0.0,0,1.0,0.0
+rings,DBSCAN(фікс. eps),1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN(фікс. eps),1% точок,0.05,0.9999585441858365,0.9997927209291819,0.2,1,0.0,0.0
+rings,DBSCAN(фікс. eps),1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN(фікс. eps),1% точок,0.25,0.9563951441595515,0.7819757207977577,27.2,136,0.4,0.2
+rings,DBSCAN(фікс. eps),1% точок,0.5,0.9710529472304656,0.8585285500194286,12.6,63,1.0,0.2
+rings,DBSCAN(фікс. eps),1% точок,1.0,0.9929702922409935,0.98815289187473,0.2,1,3.0,0.0
+rings,DBSCAN(фікс. eps),1% точок,2.0,0.9857748828888233,0.9786224960146649,0.0,0,5.6,0.0
+rings,DBSCAN(фікс. eps),5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN(фікс. eps),5% точок,0.05,0.9230071627927252,0.8059507991378576,38.6,98,2.8,0.4
+rings,DBSCAN(фікс. eps),5% точок,0.1,0.9290407549529588,0.8088743345370321,34.0,96,2.4,0.6
+rings,DBSCAN(фікс. eps),5% точок,0.25,0.8188768425600379,0.6706127057005224,94.2,175,6.6,0.8
+rings,DBSCAN(фікс. eps),5% точок,0.5,0.7735095591963074,0.6961593814219039,114.0,147,7.8,1.0
+rings,DBSCAN(фікс. eps),5% точок,1.0,0.7402787736934375,0.5816402449113137,125.2,223,20.8,0.8
+rings,DBSCAN(фікс. eps),5% точок,2.0,0.7431484529342878,0.6657380343699116,102.0,149,30.2,0.8
+rings,DBSCAN(фікс. eps),10% точок,0.01,0.9618170029651537,0.8090850148257686,18.2,91,2.2,0.2
+rings,DBSCAN(фікс. eps),10% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+rings,DBSCAN(фікс. eps),10% точок,0.1,0.8335678028792044,0.7081016925366559,90.2,154,10.4,0.8
+rings,DBSCAN(фікс. eps),10% точок,0.25,0.7615070928369461,0.6774260540934004,118.4,163,14.8,1.0
+rings,DBSCAN(фікс. eps),10% точок,0.5,0.7943946886318566,0.6974959213802756,105.0,172,16.2,0.8
+rings,DBSCAN(фікс. eps),10% точок,1.0,0.6070585157821176,0.588941886109467,186.0,211,42.4,1.0
+rings,DBSCAN(фікс. eps),10% точок,2.0,0.5900179066634911,0.4842251281058982,147.6,225,62.2,1.0
+real_iris,KMeans,внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,KMeans,внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,KMeans,внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,KMeans,внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+real_iris,KMeans,внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+real_iris,KMeans,внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+real_iris,KMeans,внутрішня точка,2.0,1.0,1.0,0.0,0,0.0,0.0
+real_iris,KMeans,межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,KMeans,межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,KMeans,межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,KMeans,межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+real_iris,KMeans,межова точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+real_iris,KMeans,межова точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+real_iris,KMeans,межова точка,2.0,0.991680383974551,0.9584019198727551,0.2,1,0.2,0.0
+real_iris,KMeans,1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,KMeans,1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,KMeans,1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,KMeans,1% точок,0.25,0.9921122957550612,0.980280739387653,0.4,1,0.0,0.0
+real_iris,KMeans,1% точок,0.5,0.9960561478775306,0.980280739387653,0.2,1,0.0,0.0
+real_iris,KMeans,1% точок,1.0,0.9960561478775306,0.980280739387653,0.2,1,0.0,0.0
+real_iris,KMeans,1% точок,2.0,0.9921122957550612,0.980280739387653,0.4,1,0.0,0.0
+real_iris,KMeans,5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,KMeans,5% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,KMeans,5% точок,0.1,0.9960561478775306,0.980280739387653,0.2,1,0.0,0.0
+real_iris,KMeans,5% точок,0.25,0.9882496649992408,0.9609080930581212,0.2,1,0.4,0.0
+real_iris,KMeans,5% точок,0.5,0.9881684436325917,0.980280739387653,0.6,1,0.0,0.0
+real_iris,KMeans,5% точок,1.0,0.9686907063478923,0.9609080930581212,0.8,1,0.8,0.0
+real_iris,KMeans,5% точок,2.0,0.9760008330489857,0.9609080930581212,0.6,1,0.6,0.0
+real_iris,KMeans,10% точок,0.01,0.9921122957550612,0.980280739387653,0.0,0,0.4,0.0
+real_iris,KMeans,10% точок,0.05,0.9960561478775306,0.980280739387653,0.2,1,0.0,0.0
+real_iris,KMeans,10% точок,0.1,0.9842939143666853,0.9609080930581212,0.6,1,0.2,0.0
+real_iris,KMeans,10% точок,0.25,0.9881803421426778,0.980280739387653,0.0,0,0.6,0.0
+real_iris,KMeans,10% точок,0.5,0.9764300071419185,0.9609080930581212,0.6,1,0.6,0.0
+real_iris,KMeans,10% точок,1.0,0.9573593418685592,0.9236239169909873,0.8,1,1.4,0.0
+real_iris,KMeans,10% точок,2.0,0.9264737084917085,0.8703309226400212,0.6,1,3.2,0.0
+real_iris,GaussianMixture,внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,внутрішня точка,2.0,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,межова точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,межова точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,межова точка,2.0,0.9962008972891452,0.9810044864457259,0.0,0,0.2,0.0
+real_iris,GaussianMixture,1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,1% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,1% точок,0.5,0.9920003614310323,0.9799872560250104,0.0,0,0.4,0.0
+real_iris,GaussianMixture,1% точок,1.0,0.9920003614310323,0.9799872560250104,0.0,0,0.4,0.0
+real_iris,GaussianMixture,1% точок,2.0,0.9556359033274437,0.8181777094820573,2.2,9,0.2,0.0
+real_iris,GaussianMixture,5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,5% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,5% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,5% точок,0.25,0.9880694234932822,0.9603598614414004,0.6,2,0.0,0.0
+real_iris,GaussianMixture,5% точок,0.5,0.9686817782174068,0.9222952173314695,1.6,4,0.0,0.0
+real_iris,GaussianMixture,5% точок,1.0,0.8455816590083594,0.6915885587937428,8.4,19,0.8,0.0
+real_iris,GaussianMixture,5% точок,2.0,0.816245919292812,0.701586606535577,10.0,17,0.8,0.0
+real_iris,GaussianMixture,10% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,10% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,10% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,GaussianMixture,10% точок,0.25,0.9645288283906084,0.9222952173314695,1.4,4,0.4,0.0
+real_iris,GaussianMixture,10% точок,0.5,0.9380036385862229,0.9038742317748124,2.2,4,1.0,0.0
+real_iris,GaussianMixture,10% точок,1.0,0.7909066461256683,0.6368789747346334,9.4,21,3.0,0.0
+real_iris,GaussianMixture,10% точок,2.0,0.592197673778521,0.4540998365248449,28.8,42,5.4,0.0
+real_iris,DBSCAN,внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,внутрішня точка,2.0,0.9911406490223893,0.9911406490223893,0.0,0,1.0,0.0
+real_iris,DBSCAN,межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,межова точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,межова точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,межова точка,2.0,0.9911406490223893,0.9911406490223893,0.0,0,1.0,0.0
+real_iris,DBSCAN,1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,1% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,1% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,1% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,1% точок,2.0,0.9857267553107774,0.9821174928363694,0.0,0,1.0,0.0
+real_iris,DBSCAN,5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,5% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,5% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,5% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,5% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,5% точок,1.0,0.996423498567274,0.9821174928363694,0.0,0,0.2,0.0
+real_iris,DBSCAN,5% точок,2.0,0.5954784274399031,0.019294888078211593,18.0,46,3.6,0.4
+real_iris,DBSCAN,10% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,10% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,10% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,10% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,10% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN,10% точок,1.0,0.7892704957018216,0.0,8.8,44,1.8,0.2
+real_iris,DBSCAN,10% точок,2.0,0.007975011630225294,0.0,44.2,47,5.8,1.0
+real_iris,Agglomerative(Ward),внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,Agglomerative(Ward),внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,Agglomerative(Ward),внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,Agglomerative(Ward),внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+real_iris,Agglomerative(Ward),внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+real_iris,Agglomerative(Ward),внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+real_iris,Agglomerative(Ward),внутрішня точка,2.0,0.9955378236561974,0.9776891182809864,0.0,0,0.2,0.0
+real_iris,Agglomerative(Ward),межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,Agglomerative(Ward),межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,Agglomerative(Ward),межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,Agglomerative(Ward),межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+real_iris,Agglomerative(Ward),межова точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+real_iris,Agglomerative(Ward),межова точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+real_iris,Agglomerative(Ward),межова точка,2.0,0.9955378236561974,0.9776891182809864,0.0,0,0.2,0.0
+real_iris,Agglomerative(Ward),1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,Agglomerative(Ward),1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,Agglomerative(Ward),1% точок,0.1,0.9921613503825364,0.9804033759563412,0.2,1,0.2,0.0
+real_iris,Agglomerative(Ward),1% точок,0.25,0.9960806751912681,0.9804033759563412,0.2,1,0.0,0.0
+real_iris,Agglomerative(Ward),1% точок,0.5,0.9844145981260999,0.9612662387178171,0.8,2,0.0,0.0
+real_iris,Agglomerative(Ward),1% точок,1.0,0.9921746517169966,0.9804033759563412,0.4,1,0.0,0.0
+real_iris,Agglomerative(Ward),1% точок,2.0,1.0,1.0,0.0,0,0.0,0.0
+real_iris,Agglomerative(Ward),5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,Agglomerative(Ward),5% точок,0.05,0.9960806751912681,0.9804033759563412,0.2,1,0.0,0.0
+real_iris,Agglomerative(Ward),5% точок,0.1,0.9804952733173682,0.9612662387178171,0.8,1,0.2,0.0
+real_iris,Agglomerative(Ward),5% точок,0.25,0.9727654049704544,0.9611435721856738,1.2,2,0.2,0.0
+real_iris,Agglomerative(Ward),5% точок,0.5,0.976724077632646,0.9614068181252738,0.8,1,0.4,0.0
+real_iris,Agglomerative(Ward),5% точок,1.0,0.9539332727498845,0.9243888681638018,1.4,2,1.0,0.0
+real_iris,Agglomerative(Ward),5% точок,2.0,0.966247146978661,0.9365751363996807,0.2,1,1.4,0.0
+real_iris,Agglomerative(Ward),10% точок,0.01,0.9921613503825364,0.9804033759563412,0.4,1,0.0,0.0
+real_iris,Agglomerative(Ward),10% точок,0.05,0.9921879530514566,0.9804698826286418,0.4,1,0.0,0.0
+real_iris,Agglomerative(Ward),10% точок,0.1,0.9845064954871269,0.9612662387178171,0.6,2,0.2,0.0
+real_iris,Agglomerative(Ward),10% точок,0.25,0.9689758121636384,0.9612662387178171,1.6,2,0.0,0.0
+real_iris,Agglomerative(Ward),10% точок,0.5,0.9538637963125224,0.9241134472838868,1.4,2,1.0,0.0
+real_iris,Agglomerative(Ward),10% точок,1.0,0.9580615694531932,0.9238731210168303,0.6,2,1.6,0.0
+real_iris,Agglomerative(Ward),10% точок,2.0,0.8671161074147641,0.5599574724000171,6.6,30,2.4,0.0
+real_iris,DBSCAN(фікс. eps),внутрішня точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),внутрішня точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),внутрішня точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),внутрішня точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),внутрішня точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),внутрішня точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),внутрішня точка,2.0,0.9911406490223893,0.9911406490223893,0.0,0,1.0,0.0
+real_iris,DBSCAN(фікс. eps),межова точка,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),межова точка,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),межова точка,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),межова точка,0.25,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),межова точка,0.5,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),межова точка,1.0,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),межова точка,2.0,0.9911406490223893,0.9911406490223893,0.0,0,1.0,0.0
+real_iris,DBSCAN(фікс. eps),1% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),1% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),1% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),1% точок,0.25,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),1% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),1% точок,1.0,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),1% точок,2.0,0.9857267553107774,0.9821174928363694,0.0,0,1.0,0.0
+real_iris,DBSCAN(фікс. eps),5% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),5% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),5% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),5% точок,0.25,0.996423498567274,0.9821174928363694,0.0,0,0.2,0.0
+real_iris,DBSCAN(фікс. eps),5% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),5% точок,1.0,0.9804013549980116,0.9646613520747721,0.0,0,1.2,0.0
+real_iris,DBSCAN(фікс. eps),5% точок,2.0,0.9176898347269804,0.8892576391949023,0.0,0,6.8,0.0
+real_iris,DBSCAN(фікс. eps),10% точок,0.01,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),10% точок,0.05,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),10% точок,0.1,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),10% точок,0.25,0.996423498567274,0.9821174928363694,0.2,1,0.0,0.0
+real_iris,DBSCAN(фікс. eps),10% точок,0.5,1.0,1.0,0.0,0,0.0,0.0
+real_iris,DBSCAN(фікс. eps),10% точок,1.0,0.9683222608101649,0.9476272478265089,0.0,0,1.8,0.0
+real_iris,DBSCAN(фікс. eps),10% точок,2.0,0.8034112579050274,0.7824319294528588,0.0,0,14.2,0.0
